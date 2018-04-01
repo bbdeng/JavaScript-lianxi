@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			for(var a=100;a<1000;a++){
+				
+				var bai = parseInt(a/100);
+				var shi = parseInt((a-bai*100)/10);
+				var ge = a % 10;
+				
+				document.write(a +"&nbsp;"+ bai +"&nbsp;"+ shi + "&nbsp;"+ ge +"<br />");
+				if(bai*bai*bai+shi*shi*shi+ge*ge*ge ==a ){
+					console.log("水仙花数为:"+a);
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

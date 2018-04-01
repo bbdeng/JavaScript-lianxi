@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(name,age){
+				this.name=name;
+				this.age=age;
+			};
+			Person.prototype.toString=function(){
+				return "[name："+this.name+",age："+this.age+"]";
+			};
+			var per1=new Person("孙悟空",18);
+			var per2=new Person("猪八戒",20);
+			var per3=new Person("红孩儿",8);
+			var per4=new Person("蜘蛛精",15);
+			var per5=new Person("白骨精",28);
+			var per6=new Person("唐僧",25);
+			
+			//console.log(per1,per2);
+			var arr=[per1,per2,per3,per4,per5,per6];
+			
+			function getAdult(bianArr){
+				var newArr=[];
+				for(i=0;i<bianArr.length;i++){
+					//console.log(bianArr[i]);
+					if(bianArr[i].age>=18){
+						newArr.push(bianArr[i]);
+					}
+				}
+				
+				return newArr;
+			};
+			
+			var result = getAdult(arr);
+			console.log("result="+result);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
