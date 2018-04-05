@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.b1 {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.b2{
+				width:200px;
+				height: 200px;
+				background-color: yellow;
+			}
+			
+			
+			 
+		</style>
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				var btn01=document.getElementById("btn01");
+				var box=document.getElementById("box");
+				btn01.onclick=function(){
+					//通过直接修改style属性来修改样式，浏览器要多次渲染，效果不好而且写起来麻烦
+					//box.style.backgroundColor="yellow";
+					//可以通过在style标签中写好另外1个class样式，然后通过js修改className来达到修改样式的效果
+					//这样可以使表现和行为进一步分离
+					//box.className += " b2";
+					//removeClass(box, "b2");
+					toggleClass(box,"b2");
+				};
+	
+			};
+			//定义一个函数，用来向一个元素中添加指定的class属性
+			//obj要添加class属性的元素
+			//cn要添加的class属性值
+			function addClass(obj , cn){
+				//这里需要判断其中有没有cn，如果不判断每次点击都会加一个cn
+				if (!hasClass(obj,cn)){
+					obj.className += " "+cn;
+				}
+	
+			}
+			//定义一个函数用来判断元素中是否含有指定的class值，如果有则返回true，如果没有则返回false
+			function hasClass(obj ,cn ){
+				var reg = new RegExp ("\\b"+cn+"\\b");
+				return reg.test(obj.className);
+				
+			}
+			//定义一个函数用来删除元素中指定的class属性
+			function removeClass(obj,cn){
+				//创建一个正则表达式
+				var reg = new RegExp ("\\b"+cn+"\\b");
+				//replace(①，②);
+				//			- 可以将字符串中指定内容替换为新的内容
+				//	- 参数：
+				//		- ①第一个：被替换的内容，可以是一个正则表达式
+				//		- ②第二个：替换的新内容
+				obj.className=obj.className.replace(reg,"");
+			}
+			//再创建一个函数用来切换一个类
+			//如果元素中具有该类，则删除； 如果元素中没有该类，则添加.
+			function toggleClass (obj ,cn){
+				if (hasClass(obj,cn)){
+					removeClass(obj,cn);
+				}else{
+					addClass(obj,cn);
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<button id="btn01">点击按钮后改变样式</button>
+		<div id="box" class="b1 b2">
+			
+		</div>
+	</body>
+</html>
